@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Start from './pages/Start';
+import ListLig from './pages/ListLig';
+import ListCommand from './pages/ListCommand';
+import CalendarOneCommand from './pages/CalendarOneCommand';
+import CalendarLig from './pages/CalendarLig';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <div>
+          <Switch>
+            <Route path={'/'} exact>
+              <Start />
+            </Route>
+            <Route path={"/list-lig"}>
+              <ListLig />
+            </Route>
+            <Route path={'/list-command'}>
+              <ListCommand />
+            </Route>
+            <Route path={'/calendar-lig'}>
+              <CalendarLig />
+            </Route>
+            <Route path={'/calendar-one-command'}>
+              <CalendarOneCommand />
+            </Route>
+        </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
