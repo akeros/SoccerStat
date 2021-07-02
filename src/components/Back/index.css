@@ -1,0 +1,24 @@
+.back-link {
+    border-radius: 16px;
+    /*border: azure 1px solid;*/
+    padding: 16px;
+    line-height: 24px;
+    text-decoration: none;
+    font-size: 24px;
+    /*background-color: azure;*/
+    transition: 0.2s ease-out;
+    color: #115189;
+    box-sizing: border-box;
+}
+
+.back-link:hover {
+    border-radius: 24px;
+    color: green;
+    /*background-color: green;*/
+    transition: 0.2s ease-in;
+}
+
+.back-wrapper {
+    display: flex;
+
+}
