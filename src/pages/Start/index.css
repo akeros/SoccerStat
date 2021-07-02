@@ -1,0 +1,20 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 5fr);
+    grid-auto-rows: 60px;
+    padding: 30px;
+    background-color: skyblue;
+    width: 250px;
+    border-radius: 5%;
+    margin-top: 15%;
+    
+    
+  
+  }
+  
+.fon {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  
+}
