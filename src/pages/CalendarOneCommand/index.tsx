@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import TopBar from "../../components/TopBar";
 
 export default function CalendarOneCommand() {
   return (
     <div>
-      <button onClick={CalendarOneCommand}>
-      <Link to="/">На главную</Link>
-      </button>
+      <TopBar title={'Календарь Одной Комманды'}/>
     </div>
   );
 }

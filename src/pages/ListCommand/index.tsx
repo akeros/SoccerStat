@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import TopBar from "../../components/TopBar";
 import './index.css';
 
@@ -22,7 +22,7 @@ export default function ListCommand() {
   }, []);
   return (
     <div>
-      <TopBar title={'Лист Комманд'}/>
+      <TopBar title={'Список Команд'}/>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
         {commands.map((command: any) => (
           <div className={'command-card'} key={command.name}>
