@@ -1,3 +1,14 @@
-.link {
+.lig-card {
+    display: flex;
+    margin: 16px;
+    width: 400px;
+    height: 100px;
+    transition: 0.5s ease-out;
+    border-radius: 8px;
+    padding: 8px;
+}
 
+.lig-card:hover {
+    transition: 0.5s ease-in;
+    box-shadow: 1px 1px 1px 3px #cccccc70;
 }

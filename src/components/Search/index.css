@@ -1,0 +1,19 @@
+.search {
+    flex: 1;
+    border: none;
+    padding: 8px;
+    margin: 0 8px;
+    font-size: 16px;
+}
+
+.search-wrapper {
+    display: flex;
+    border-bottom: 1px solid black;
+    height: 40px;
+    align-items: center;
+    padding: 0 12px 0 20px;
+}
+.search-clear {
+    background: none;
+    border: none;
+}
