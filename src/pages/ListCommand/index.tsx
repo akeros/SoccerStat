@@ -2,9 +2,21 @@ import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import TopBar from "../../components/TopBar";
 import './index.css';
+import Search from '../../components/Search';
+import useDebounce from '../../components/hooks/useDebounce';
 
 export default function ListCommand() {
   const [commands, setCommands] = useState<any>([]);
+  const [filteredCommand, setFilteredCommand] = useState<any>([]);
+  const [search, setSearch] = useState<string>('');
+
+  const debounceSearch = useDebounce(search, 500);
+
+  useEffect(() => {
+    const matchRegExp = new RegExp(debounceSearch, 'i');
+    setFilteredCommand(commands.filter((command: any) => command?.name?.match?.(matchRegExp)));
+  }, [debounceSearch]);
+
   useEffect(() => {
     const url = "https://api.football-data.org/v2/teams"
     const requestOptions: RequestInit = {
@@ -20,11 +32,17 @@ export default function ListCommand() {
       .then(result => setCommands(result.teams))
       .catch(error => console.error('error', error));
   }, []);
+
+  const commandList = debounceSearch ? filteredCommand : commands;
+
   return (
     <div>
       <TopBar title={'Список Команд'}/>
+      <div>
+        <Search onChange={setSearch}/>
+      </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
-        {commands.map((command: any) => (
+        {commandList.map((command: any) => (
           <div className={'command-card'} key={command.name}>
             <img width={100} height={100} src={command.crestUrl}/>
             <div>{command.name}</div>
