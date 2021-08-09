@@ -12,6 +12,7 @@ export default function ListLig() {
   const [ligs, setLigs] = useState<any>([]);
   const [filteredLigs, setFilteredLigs] = useState<any>([]);
   const [search, setSearch] = useState<string>('');
+  const [isLoaded, setLoaded] = useState<boolean>(false);
 
   const debounceSearch = useDebounce(search, 500);
 
@@ -33,6 +34,7 @@ export default function ListLig() {
     fetch(url, requestOptions)
       .then(response => response.json())
       .then(result => setLigs(result.competitions))
+      .then(() => setLoaded(true))
       .catch(error => console.error('error', error));
   }, []);
 
@@ -44,7 +46,7 @@ export default function ListLig() {
     <div>
      <TopBar title={'Список Лиг'}/>
       <div>
-        <Search onChange={setSearch}/>
+        <Search onChange={setSearch} isLoaded={isLoaded}/>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
         {list.map((lig: any) => (

@@ -9,6 +9,7 @@ export default function ListCommand() {
   const [commands, setCommands] = useState<any>([]);
   const [filteredCommand, setFilteredCommand] = useState<any>([]);
   const [search, setSearch] = useState<string>('');
+  const [isLoaded, setLoaded] = useState<boolean>(false);
 
   const debounceSearch = useDebounce(search, 500);
 
@@ -30,6 +31,7 @@ export default function ListCommand() {
     fetch(url, requestOptions)
       .then(response => response.json())
       .then(result => setCommands(result.teams))
+      .then(() => setLoaded(true))
       .catch(error => console.error('error', error));
   }, []);
 
@@ -39,7 +41,7 @@ export default function ListCommand() {
     <div>
       <TopBar title={'Список Команд'}/>
       <div>
-        <Search onChange={setSearch}/>
+        <Search onChange={setSearch} isLoaded={isLoaded}/>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
         {commandList.map((command: any) => (
