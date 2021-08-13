@@ -7,12 +7,14 @@ import React, { useEffect, useState } from 'react';
 import notFound from '../../kaknibud.png';
 import Search from '../../components/Search';
 import useDebounce from '../../components/hooks/useDebounce';
+import useFetch from '../../components/hooks/useFetch';
+import Loader from '../../components/Loader';
+import Error from '../../components/Error';
 
 export default function ListLig() {
   const [ligs, setLigs] = useState<any>([]);
   const [filteredLigs, setFilteredLigs] = useState<any>([]);
   const [search, setSearch] = useState<string>('');
-  const [isLoaded, setLoaded] = useState<boolean>(false);
 
   const debounceSearch = useDebounce(search, 500);
 
@@ -21,22 +23,16 @@ export default function ListLig() {
     setFilteredLigs(ligs.filter((lig: any) => lig?.name?.match?.(matchRegExp)));
   }, [debounceSearch]);
 
-  useEffect(() => {
-    const url = "https://api.football-data.org/v2/competitions"
-    const requestOptions: RequestInit = {
-      method: 'GET',
-      headers: {
-        "X-Auth-Token": "32491c9952d44cbcbd0ccf0b2e6a2d23",
-      },
-      mode: 'cors'
-    };
+  const {
+    isLoaded,
+    error,
+    data,
+    retry,
+  } = useFetch<any>('competitions')
 
-    fetch(url, requestOptions)
-      .then(response => response.json())
-      .then(result => setLigs(result.competitions))
-      .then(() => setLoaded(true))
-      .catch(error => console.error('error', error));
-  }, []);
+  useEffect(() => {
+    data && setLigs(data.competitions);
+  }, [data]);
 
   console.log(filteredLigs);
 
@@ -48,6 +44,8 @@ export default function ListLig() {
       <div>
         <Search onChange={setSearch} isLoaded={isLoaded}/>
       </div>
+      <Loader isLoaded={isLoaded}/>
+      <Error error={error} retry={retry}/>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
         {list.map((lig: any) => (
           <div className={'lig-card'} key={lig.id}>

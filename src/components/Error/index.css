@@ -1,0 +1,22 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 30vh;
+}
+
+.error-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.error-retry {
+    background-color: #115189;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    margin: 8px;
+    color: white;
+}

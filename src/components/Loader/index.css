@@ -1,0 +1,13 @@
+.loader {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 30vh;
+}
+
+.loader-text {
+    font-size: 24px;
+    font-weight: bold;
+}
