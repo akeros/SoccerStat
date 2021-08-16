@@ -34,8 +34,6 @@ export default function ListLig() {
     data && setLigs(data.competitions);
   }, [data]);
 
-  console.log(filteredLigs);
-
   const list = debounceSearch ? filteredLigs : ligs;
 
   return (

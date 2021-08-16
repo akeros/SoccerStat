@@ -1,0 +1,16 @@
+.calendar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 8px;
+}
+
+.calendar-nav-month {
+    width: 80px;
+    margin: 0 8px;
+    text-align: center;
+}
+
+.calendar-nav-arrow {
+    padding: 0 8px;
+}

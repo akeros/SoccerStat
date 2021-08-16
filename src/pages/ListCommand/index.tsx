@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TopBar from "../../components/TopBar";
 import './index.css';
 import Search from '../../components/Search';
@@ -30,7 +30,6 @@ export default function ListCommand() {
   useEffect(() => {
     data && setCommands(data.teams);
   }, [data])
-  console.log(data);
 
   const commandList = debounceSearch ? filteredCommand : commands;
 
@@ -44,10 +43,12 @@ export default function ListCommand() {
       <Error error={error} retry={retry}/>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
         {commandList.map((command: any) => (
-          <div className={'command-card'} key={command.name}>
-            <img width={100} height={100} src={command.crestUrl}/>
-            <div>{command.name}</div>
-          </div>
+          <Link to={`/calendar-one-command/${command.id}`}>
+            <div className={'command-card'} key={command.name}>
+              <img width={100} height={100} src={command.crestUrl}/>
+              <div>{command.name}</div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

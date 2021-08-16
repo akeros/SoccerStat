@@ -24,7 +24,6 @@ export default function Search(props: IProps) {
           return { ...acc, [key]: value };
         },{});
 
-      console.log(query);
       props.onChange(query?.search || '');
       inputRef.current.value = query?.search || '';
     }

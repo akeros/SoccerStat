@@ -25,7 +25,7 @@ function App() {
             <Route path={'/calendar-lig'}>
               <CalendarLig />
             </Route>
-            <Route path={'/calendar-one-command'}>
+            <Route path={'/calendar-one-command/:id'}>
               <CalendarOneCommand />
             </Route>
         </Switch>
