@@ -3,6 +3,7 @@ import { DefaultMonthlyEventItem, MonthlyBody, MonthlyCalendar, MonthlyDay } fro
 import { format, startOfMonth } from 'date-fns';
 import React, { useState } from 'react';
 import { CalendarNav } from './CalendarNav';
+import CalendarFilter from './CalendarFilter';
 
 interface IProps {
   events?: Array<{ title: string; date: Date }>
@@ -29,6 +30,7 @@ export default function Calendar({ events }: IProps) {
       onCurrentMonthChange={date => setCurrentMonth(date)}
       locale={ru}
     >
+      <CalendarFilter />
       <CalendarNav />
       <MonthlyBody
         events={events}

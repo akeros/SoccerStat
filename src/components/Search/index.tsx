@@ -16,13 +16,13 @@ export default function Search(props: IProps) {
 
   useEffect(() => {
     if (props.isLoaded) {
-      const query: any = location.search
+      const query: any = location.search ? location.search
         .replace('?', '')
         .split('&')
         .reduce((acc,item) => {
           const [key, value] = item.split('=');
           return { ...acc, [key]: value };
-        },{});
+        }, {}) : {};
 
       props.onChange(query?.search || '');
       inputRef.current.value = query?.search || '';
