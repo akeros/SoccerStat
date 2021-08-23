@@ -22,7 +22,7 @@ function App() {
             <Route path={'/list-command'}>
               <ListCommand />
             </Route>
-            <Route path={'/calendar-lig'}>
+            <Route path={'/calendar-lig/:id'}>
               <CalendarLig />
             </Route>
             <Route path={'/calendar-one-command/:id'}>

@@ -25,10 +25,17 @@ export default function useFetch<T>(url: string): IFetch<T> {
     setError(null);
     setLoaded(false);
     fetch(basicUrl + url, requestOptions)
+      .then((response: Response) => {
+        if (response.status === 200) {
+          return response;
+        }
+
+        throw new Error(`${response.status}`);
+      })
       .then(response => response.json())
       .then(result => setData(result))
       .catch(error => {
-        setError(new Error(error))
+        setError(error);
       })
       .finally(() => setLoaded(true));
   }

@@ -43,8 +43,8 @@ export default function ListCommand() {
       <Error error={error} retry={retry}/>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
         {commandList.map((command: any) => (
-          <Link to={`/calendar-one-command/${command.id}`}>
-            <div className={'command-card'} key={command.name}>
+          <Link to={`/calendar-one-command/${command.id}`} key={command.name}>
+            <div className={'command-card'}>
               <img width={100} height={100} src={command.crestUrl}/>
               <div>{command.name}</div>
             </div>

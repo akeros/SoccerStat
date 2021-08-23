@@ -46,8 +46,8 @@ export default function ListLig() {
       <Error error={error} retry={retry}/>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
         {list.map((lig: any) => (
-          <Link to={`/calendar-lig/${ligs.id}`}>
-            <div className={'lig-card'} key={lig.id}>
+          <Link to={`/calendar-lig/${lig.id}`} key={lig.id}>
+            <div className={'lig-card'} >
               <img width={100} height={100} src={lig.emblemUrl || lig.area.ensignUrl || notFound}/>
             <div>{lig.name}</div>
             </div>
