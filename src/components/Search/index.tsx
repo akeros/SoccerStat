@@ -3,6 +3,7 @@ import chest from '../chest.png'
 import search from '../search.png'
 import './index.css'
 import { useHistory, useLocation } from 'react-router-dom';
+import { queryToObject } from '../../utils';
 
 interface IProps {
   onChange(text: string): void;
@@ -16,13 +17,7 @@ export default function Search(props: IProps) {
 
   useEffect(() => {
     if (props.isLoaded) {
-      const query: any = location.search ? location.search
-        .replace('?', '')
-        .split('&')
-        .reduce((acc,item) => {
-          const [key, value] = item.split('=');
-          return { ...acc, [key]: value };
-        }, {}) : {};
+      const query: any = queryToObject(location.search);
 
       props.onChange(query?.search || '');
       inputRef.current.value = query?.search || '';

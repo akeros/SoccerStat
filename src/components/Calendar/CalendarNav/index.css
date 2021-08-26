@@ -14,3 +14,7 @@
 .calendar-nav-arrow {
     padding: 0 8px;
 }
+
+.calendar-nav-arrow:disabled {
+    opacity: 0.3;
+}

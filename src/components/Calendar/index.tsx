@@ -1,19 +1,37 @@
 import { ru } from 'date-fns/locale';
 import { DefaultMonthlyEventItem, MonthlyBody, MonthlyCalendar, MonthlyDay } from '@zach.codes/react-calendar';
-import { format, startOfMonth } from 'date-fns';
-import React, { useState } from 'react';
+import { format, startOfMonth, subHours } from 'date-fns';
+import React, { useEffect, useState } from 'react';
 import { CalendarNav } from './CalendarNav';
 import CalendarFilter from './CalendarFilter';
 import './index.css';
+import { useLocation } from 'react-router-dom';
+import { queryToObject } from '../../utils';
 
 interface IProps {
   events?: Array<{ title: string; date: Date }>
 }
 
 export default function Calendar({ events }: IProps) {
-  let [currentMonth, setCurrentMonth] = useState<Date>(
-    startOfMonth(new Date())
-  );
+  const location = useLocation();
+  const query = queryToObject(location.search);
+  const from = query.from && subHours(new Date(query.from), 2);
+  const to = query.to && subHours(new Date(query.to), 2);
+
+
+  const filteredEvents = events && location.search ? events.filter((event =>
+      (!from || event.date >= from) && (!to || event.date <= to)
+  )) : events || [];
+
+  const startDate = filteredEvents?.[0]?.date;
+  const endDate = filteredEvents?.[filteredEvents.length - 1]?.date;
+
+  const currentDay = (endDate && endDate <= new Date()) ? endDate : new Date();
+  const [currentMonth, setCurrentMonth] = useState<Date>(startOfMonth(currentDay));
+
+  useEffect(() => {
+    endDate && setCurrentMonth(endDate);
+  }, [endDate])
 
   if (!events) {
     return null;
@@ -32,11 +50,11 @@ export default function Calendar({ events }: IProps) {
       locale={ru}
     >
       <div className={'calendar'}>
-        <CalendarFilter />
-        <CalendarNav />
+        <CalendarFilter from={startDate} to={endDate} />
+        <CalendarNav from={startDate} to={endDate} />
       </div>
       <MonthlyBody
-        events={events}
+        events={filteredEvents}
       >
         <MonthlyDay
           renderDay={data =>
@@ -44,7 +62,6 @@ export default function Calendar({ events }: IProps) {
               <DefaultMonthlyEventItem
                 key={index}
                 title={item.title}
-                // Format the date here to be in the format you prefer
                 date={format(item.date, 'k:mm')}
               />
             ))

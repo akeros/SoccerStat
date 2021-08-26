@@ -1,20 +1,16 @@
 import './index.css';
 import { useHistory, useLocation } from 'react-router-dom';
+import { queryToObject, queryToString } from '../../../utils';
 
-export default function CalendarFilter() {
+interface IProps {
+  from?: Date;
+  to?: Date;
+}
+
+export default function CalendarFilter({ to, from }: IProps) {
   const location = useLocation();
   const history = useHistory();
-
-  const query: any = location.search ? location.search
-    .replace('?', '')
-    .split('&')
-    .reduce((acc,item) => {
-      const [key, value] = item.split('=');
-      return { ...acc, [key]: value };
-    }, {}) : {};
-
-  const queryToString = (): string => Object.entries(query)
-    .reduce((acc, [key, value], index) => acc + `${index ? '&' : '?'}${key}=${value}`, '');
+  const query = queryToObject(location.search)
 
   return (
     <div className={'calendar-filter'}>
@@ -26,12 +22,13 @@ export default function CalendarFilter() {
           id="start"
           name="trip-start"
           value={query?.from}
+          min={from?.toISOString().slice(0, 10)}
           max={query?.to}
           onChange={(event) => {
             query.from = event.target.value;
             history.push({
               pathname: location.pathname,
-              search: queryToString(),
+              search: queryToString(query),
             })
           }}
         />
@@ -45,11 +42,12 @@ export default function CalendarFilter() {
           name="trip-start"
           value={query?.to}
           min={query?.from}
+          max={to?.toISOString().slice(0, 10)}
           onChange={(event) => {
             query.to = event.target.value;
             history.push({
               pathname: location.pathname,
-              search: queryToString(),
+              search: queryToString(query),
             })
           }}
         />

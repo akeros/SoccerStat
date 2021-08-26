@@ -1,16 +1,9 @@
-// import { Link } from "react-router-dom";
-import { format, subHours, startOfMonth } from 'date-fns';
-import {
-  MonthlyBody,
-  MonthlyDay,
-  MonthlyCalendar,
-  DefaultMonthlyEventItem,
-} from '@zach.codes/react-calendar';
+import { subHours } from 'date-fns';
 import '@zach.codes/react-calendar/dist/calendar-tailwind.css';
 import '@zach.codes/react-calendar/dist/calendar-tailwind-no-reset.css';
 
 import TopBar from "../../components/TopBar";
-import React, { useState } from 'react';
+import React from 'react';
 import useFetch from '../../components/hooks/useFetch';
 import { useParams } from 'react-router-dom';
 import Loader from '../../components/Loader';
@@ -27,10 +20,9 @@ export default function CalendarOneCommand() {
     data,
   } = useFetch<any>(`teams/${id}/matches`);
 
-
   const matches = data?.matches.map((match: any) => {
     return {
-      title: match.competition.name,
+      title: `${match.homeTeam.name} - ${match.awayTeam.name}`,
       date: subHours(new Date(match.utcDate), 2),
     }
   });
