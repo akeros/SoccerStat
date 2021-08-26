@@ -17,8 +17,8 @@ export default function CalendarFilter() {
     .reduce((acc, [key, value], index) => acc + `${index ? '&' : '?'}${key}=${value}`, '');
 
   return (
-    <div>
-      <div>
+    <div className={'calendar-filter'}>
+      <div className={'calendar-filter-input'}>
         <label htmlFor="start">С:</label>
 
         <input

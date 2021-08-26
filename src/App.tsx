@@ -16,16 +16,16 @@ function App() {
             <Route path={'/'} exact>
               <Start />
             </Route>
-            <Route path={"/list-lig"}>
+            <Route path={"/ligs"} exact>
               <ListLig />
             </Route>
-            <Route path={'/list-command'}>
+            <Route path={'/commands'} exact>
               <ListCommand />
             </Route>
-            <Route path={'/calendar-lig/:id'}>
+            <Route path={'/ligs/:id'}>
               <CalendarLig />
             </Route>
-            <Route path={'/calendar-one-command/:id'}>
+            <Route path={'/commands/:id'}>
               <CalendarOneCommand />
             </Route>
         </Switch>
