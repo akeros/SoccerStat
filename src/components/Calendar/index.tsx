@@ -18,10 +18,9 @@ export default function Calendar({ events }: IProps) {
   const from = query.from && subHours(new Date(query.from), 2);
   const to = query.to && subHours(new Date(query.to), 2);
 
-
   const filteredEvents = events && location.search ? events.filter((event =>
       (!from || event.date >= from) && (!to || event.date <= to)
-  )) : events || [];
+  )) : events;
 
   const startDate = filteredEvents?.[0]?.date;
   const endDate = filteredEvents?.[filteredEvents.length - 1]?.date;
@@ -33,11 +32,11 @@ export default function Calendar({ events }: IProps) {
     endDate && setCurrentMonth(endDate);
   }, [endDate])
 
-  if (!events) {
+  if (!filteredEvents) {
     return null;
   }
 
-  if (!events.length) {
+  if (!filteredEvents.length) {
     return (
       <div>Нет матчей</div>
     )
