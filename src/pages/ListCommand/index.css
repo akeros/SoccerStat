@@ -1,3 +1,9 @@
+.command-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 .command-card {
     display: flex;
     margin: 16px;
@@ -6,9 +12,36 @@
     transition: 0.5s ease-out;
     border-radius: 8px;
     padding: 8px;
+    position: relative;
+}
+
+.command-card a {
+    position: relative;
+    color: #115189;
+    transition: 0.2s ease-out;
+}
+
+.command-card a:hover {
+    transition: 0.2s ease-in;
+    color: blue;
 }
 
 .command-card:hover {
     transition: 0.5s ease-in;
     box-shadow: 1px 1px 1px 3px #cccccc70;
+}
+
+.command-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 4px;
+}
+
+.command-card > a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }

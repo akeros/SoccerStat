@@ -33,7 +33,7 @@ export default function CalendarFilter({ to, from }: IProps) {
           }}
         />
       </div>
-      <div>
+      <div className={'calendar-filter-input'}>
         <label htmlFor="end">По:</label>
 
         <input

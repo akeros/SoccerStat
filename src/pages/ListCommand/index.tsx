@@ -26,7 +26,7 @@ export default function ListCommand() {
     retry,
     data,
   } = useFetch<any>('teams');
-
+  console.log(data);
   useEffect(() => {
     data && setCommands(data.teams);
   }, [data])
@@ -41,14 +41,17 @@ export default function ListCommand() {
       </div>
       <Loader isLoaded={isLoaded}/>
       <Error error={error} retry={retry}/>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
+      <div className={'command-card-wrapper'}>
         {commandList.map((command: any) => (
-          <Link to={`/commands/${command.id}`} key={command.name}>
             <div className={'command-card'}>
+              <Link to={`/commands/${command.id}`} key={command.name} />
               <img width={100} height={100} src={command.crestUrl}/>
-              <div>{command.name}</div>
+              <div className={'command-card-info'}>
+                {command.name}
+                <a href={`mailto:${command.email}`}>{command.email}</a>
+                <a href={command.website} target='_blank'>{command.website}</a>
+              </div>
             </div>
-          </Link>
         ))}
       </div>
     </div>
