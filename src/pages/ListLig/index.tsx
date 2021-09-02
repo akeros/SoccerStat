@@ -29,6 +29,7 @@ export default function ListLig() {
     data,
     retry,
   } = useFetch<any>('competitions')
+console.log(data);
 
   useEffect(() => {
     data && setLigs(data.competitions);
@@ -49,7 +50,10 @@ export default function ListLig() {
           <Link to={`/ligs/${lig.id}`} key={lig.id}>
             <div className={'lig-card'} >
               <img width={100} height={100} src={lig.emblemUrl || lig.area.ensignUrl || notFound}/>
-            <div>{lig.name}</div>
+            <div className='lig-card-style'>
+              <div className={'lig-card-style'}> {lig.name}</div>
+              <div className={'lig-card-style'}> {lig.area.name}</div>
+            </div>
             </div>
             </Link>
         ))}

@@ -12,3 +12,10 @@
     transition: 0.5s ease-in;
     box-shadow: 1px 1px 1px 3px #cccccc70;
 }
+
+.lig-card-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 8px;
+}
