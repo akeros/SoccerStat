@@ -1,46 +1,60 @@
 .wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 60px;
-    grid-auto-columns: 150px;
-    padding: 24px;
-    background-color: darkgray;
-    /*width: 250px;*/
-    /*height: 50%;*/
-    border-radius: 16px;
-    /*margin-top: 15%;*/
-    grid-column-gap: 8px;
-    grid-row-gap: 8px;
-    border: black 1px solid;
+    position: relative;
+}
+
+.gradient {
+    display: flex;
+    /*flex-direction: column;*/
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(-30deg, #f700ff 50%, #2fff00 50%);
+}
+
+.gradient > div {
+    display: flex;
+    height: 50vh;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    font-size: 60px;
+    font-weight: bold;
 }
 
-.wrapper-link {
-    border-radius: 16px;
-    border: azure 1px solid;
-    padding: 16px;
-    line-height: 24px;
-    text-decoration: none;
-    font-size: 24px;
-    background-color: azure;
+.active-zone {
+    position: absolute;
+    display: flex;
+    top: -60vh;
+    left: -60vw;
+    right: -60vw;
+    bottom: -60vh;
+    transform: rotate(60deg);
+}
+
+.active-zone a {
+    display: flex;
+    flex: 1;
+}
+
+.active-zone-first {
+    opacity: 0.8;
+    background-color: #f700ff;
     transition: 0.5s ease-out;
-    color: black;
-    box-sizing: border-box;
 }
 
-.wrapper-link:hover {
-    background-color: red;
-    color: white;
-    border-color: black;
+.active-zone-first:hover {
+    opacity: 0;
     transition: 0.5s ease-in;
 }
 
-.fon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
+.active-zone-second {
+    opacity: 0.8;
+    background-color: #2fff00;
+    transition: 0.5s ease-out;
+}
 
+.active-zone-second:hover {
+    opacity: 0;
+    transition: 0.5s ease-in;
 }

@@ -50,12 +50,17 @@ console.log(data);
           <Link to={`/ligs/${lig.id}`} key={lig.id}>
             <div className={'lig-card'} >
               <img width={100} height={100} src={lig.emblemUrl || lig.area.ensignUrl || notFound}/>
-            <div className='lig-card-style'>
-              <div className={'lig-card-style'}> {lig.name}</div>
-              <div className={'lig-card-style'}> {lig.area.name}</div>
+              <div className='lig-card-style'>
+                <div>{lig.name}</div>
+                <div>{lig.area.name}</div>
+                <div>
+                  {lig?.currentSeason?.startDate.replace(/\d{2}(\d{2})-(\d+)-(\d+)/, '$3.$2.$1')}
+                  {' - '}
+                  {lig?.currentSeason?.endDate.replace(/\d{2}(\d{2})-(\d+)-(\d+)/, '$3.$2.$1')}
+                </div>
+              </div>
             </div>
-            </div>
-            </Link>
+          </Link>
         ))}
       </div>
     </div>
