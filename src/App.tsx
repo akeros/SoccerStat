@@ -10,7 +10,7 @@ import CalendarLig from './pages/CalendarLig';
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/SoccerStat">
         <div>
           <Switch>
             <Route path={'/'} exact>
