@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/SoccerStat/static/css/main.3b7f1798.chunk.css",
+    "main.js": "/SoccerStat/static/js/main.c3ca2155.chunk.js",
+    "main.js.map": "/SoccerStat/static/js/main.c3ca2155.chunk.js.map",
+    "runtime-main.js": "/SoccerStat/static/js/runtime-main.72cc0066.js",
+    "runtime-main.js.map": "/SoccerStat/static/js/runtime-main.72cc0066.js.map",
+    "static/css/2.e3c18a4b.chunk.css": "/SoccerStat/static/css/2.e3c18a4b.chunk.css",
+    "static/js/2.07c18739.chunk.js": "/SoccerStat/static/js/2.07c18739.chunk.js",
+    "static/js/2.07c18739.chunk.js.map": "/SoccerStat/static/js/2.07c18739.chunk.js.map",
+    "static/js/3.0893f065.chunk.js": "/SoccerStat/static/js/3.0893f065.chunk.js",
+    "static/js/3.0893f065.chunk.js.map": "/SoccerStat/static/js/3.0893f065.chunk.js.map",
+    "index.html": "/SoccerStat/index.html",
+    "static/css/2.e3c18a4b.chunk.css.map": "/SoccerStat/static/css/2.e3c18a4b.chunk.css.map",
+    "static/css/main.3b7f1798.chunk.css.map": "/SoccerStat/static/css/main.3b7f1798.chunk.css.map",
+    "static/js/2.07c18739.chunk.js.LICENSE.txt": "/SoccerStat/static/js/2.07c18739.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.72cc0066.js",
+    "static/css/2.e3c18a4b.chunk.css",
+    "static/js/2.07c18739.chunk.js",
+    "static/css/main.3b7f1798.chunk.css",
+    "static/js/main.c3ca2155.chunk.js"
+  ]
+}
